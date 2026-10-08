@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SLURM 3D | CaféVerse</title>
+
+    <!-- Visor 3D -->
+    <script type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #153f59, transparent 30%),
+                radial-gradient(circle at 80% 70%, #7da81b, transparent 25%),
+                linear-gradient(135deg, #050914, #07192b, #08131c);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .small-title {
+            color: #c9ed39;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 5px;
+
+            background: linear-gradient(
+                90deg,
+                #45bfff,
+                #d98bc5,
+                #d7ef38
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            color: #b8c5d1;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .viewer-box {
+            position: relative;
+
+            width: 100%;
+            height: 600px;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(70, 191, 255, 0.15),
+                    rgba(255,255,255,0.03)
+                );
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.45);
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+
+            background: transparent;
+
+            --poster-color: transparent;
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background: rgba(5, 10, 20, 0.78);
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            padding: 10px 18px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            color: #d8e5ec;
+
+            white-space: nowrap;
+
+            pointer-events: none;
+        }
+
+        .slurm-badge {
+            position: absolute;
+
+            top: 20px;
+            left: 20px;
+
+            padding: 9px 15px;
+
+            background: rgba(203, 235, 45, 0.15);
+
+            border:
+                1px solid rgba(203,235,45,0.45);
+
+            border-radius: 30px;
+
+            color: #d7ef38;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            z-index: 2;
+        }
+
+        .buttons {
+            margin-top: 20px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border: none;
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            color: #071019;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d7ef38,
+                    #45caff
+                );
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            margin-top: 20px;
+
+            color: #71808e;
+
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .viewer-box {
+                height: 500px;
+                border-radius: 22px;
+            }
+
+            .instructions {
+                font-size: 11px;
+                padding: 9px 13px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <p class="small-title">
+        CAFÉVERSE · UNIVERSO FUTURISTA
+    </p>
+
+    <h1>SLURM</h1>
+
+    <p class="description">
+        Explora nuestra bebida intergaláctica en 3D.
+        Gira la lata, acércate y descubre todos sus detalles.
+    </p>
+
+
+    <div class="viewer-box">
+
+        <div class="slurm-badge">
+            MODELO 3D
+        </div>
+
+
+        <model-viewer
+
+            src="Slurm_Azul_3D_Blender.glb"
+
+            alt="Modelo 3D de la bebida SLURM de CaféVerse"
+
+            camera-controls
+
+            touch-action="pan-y"
+
+            auto-rotate
+
+            rotation-per-second="20deg"
+
+            shadow-intensity="1"
+
+            shadow-softness="1"
+
+            exposure="1.1"
+
+            environment-image="neutral"
+
+            interaction-prompt="auto">
+
+        </model-viewer>
+
+
+        <div class="instructions">
+            🖱️ Arrastra para girar · 🔍 Usa la rueda para acercar
+        </div>
+
+    </div>
+
+
+    <div class="buttons">
+
+        <a
+            class="button"
+            href="../index.html">
+            ☕ Volver a CaféVerse
+        </a>
+
+    </div>
+
+
+    <p class="footer-text">
+        CAFÉVERSE — Un universo en cada taza 🚀
+    </p>
+
+</div>
+
+</body>
+</html>
